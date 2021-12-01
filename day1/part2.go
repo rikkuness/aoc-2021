@@ -17,9 +17,7 @@ func part2() {
 	)
 	for s.Scan() {
 		c, _ := strconv.Atoi(s.Text())
-		w[2] = w[1]
-		w[1] = w[0]
-		w[0] = c
+		w[2], w[1], w[0] = w[1], w[0], c
 		i++
 		if i < 3 {
 			continue
