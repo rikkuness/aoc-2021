@@ -15,14 +15,14 @@ func part1() {
 	for s.Scan() {
 		p := strings.Split(s.Text(), " ")
 		v, _ := strconv.Atoi(p[1])
-		switch p[0] {
-		case "forward":
+		switch p[0][0] {
+		case 'f':
 			h += v
-		case "down":
+		case 'd':
 			d += v
-		case "up":
+		case 'u':
 			d -= v
 		}
 	}
-	fmt.Printf("hPos: %d\tvPos: %d\tproduct: %d\n", h, d, h*d)
+	fmt.Println(h * d)
 }
