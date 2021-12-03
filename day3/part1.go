@@ -21,13 +21,11 @@ func part1() {
 			} else {
 				c[i] -= 1
 			}
-		}
-	}
-	for i := 0; i < len(c); i++ {
-		if c[i] > 0 {
-			x |= 1 << (len(c) - 1 - i)
-		} else {
-			x &= ^(1 << (len(c) - 1 - i))
+			if c[i] > 0 {
+				x |= 1 << (len(c) - 1 - i)
+			} else {
+				x &= ^(1 << (len(c) - 1 - i))
+			}
 		}
 	}
 	fmt.Println(int(x) * int(^x&4095))
