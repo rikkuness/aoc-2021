@@ -3,13 +3,12 @@ package main
 import (
 	"bufio"
 	"fmt"
-	"os"
+	"io"
 	"strconv"
 	"strings"
 )
 
-func part2() {
-	f, _ := os.Open("input.txt")
+func part2(f io.Reader) {
 	s := bufio.NewScanner(f)
 	var h, d, a int
 	for s.Scan() {
