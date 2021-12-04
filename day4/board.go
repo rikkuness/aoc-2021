@@ -7,20 +7,24 @@ type Cell struct {
 
 type Board struct {
 	data [d][d]Cell
-	done bool
+	win  bool
 	sum  int
 }
 
-func (b *Board) Mark(i uint8) {
+func (b *Board) Mark(i uint8) bool {
 	for x := 0; x < d; x++ {
 		for y := 0; y < d; y++ {
 			if b.data[x][y].val == i {
 				b.data[x][y].tick = true
 				b.sum -= int(i)
-				return
+				if b.rowDone(x) || b.colDone(y) {
+					b.win = true
+				}
+				return b.win
 			}
 		}
 	}
+	return b.win
 }
 
 func (b *Board) rowDone(rn int) bool {
@@ -41,18 +45,4 @@ func (b *Board) colDone(cn int) bool {
 		}
 	}
 	return t == d
-}
-
-func (b *Board) Bingo() bool {
-	for i := 0; i < d; i++ {
-		if b.rowDone(i) {
-			b.done = true
-			return true
-		}
-		if b.colDone(i) {
-			b.done = true
-			return true
-		}
-	}
-	return false
 }

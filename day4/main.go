@@ -38,9 +38,8 @@ func main() {
 
 	for _, c := range callouts {
 		for bi, b := range boards {
-			if !b.done {
-				b.Mark(c)
-				if b.Bingo() {
+			if !b.win {
+				if b.Mark(c) {
 					fmt.Println("board", bi, "wins: ", b.sum*int(c))
 				}
 			}
