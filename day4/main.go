@@ -33,6 +33,7 @@ func main() {
 		}
 
 		boards[i/(d*d)].data[(i%(d*d)/d)%d][i%(d*d)%d].val = uint8(ui)
+		boards[i/(d*d)].sum += int(ui)
 	}
 
 	for _, c := range callouts {
@@ -40,7 +41,7 @@ func main() {
 			if !b.done {
 				b.Mark(c)
 				if b.Bingo() {
-					fmt.Println("board", bi, "wins: ", b.Sum()*int(c))
+					fmt.Println("board", bi, "wins: ", b.sum*int(c))
 				}
 			}
 		}

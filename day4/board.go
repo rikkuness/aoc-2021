@@ -8,6 +8,7 @@ type Cell struct {
 type Board struct {
 	data [d][d]Cell
 	done bool
+	sum  int
 }
 
 func (b *Board) Mark(i uint8) {
@@ -15,6 +16,7 @@ func (b *Board) Mark(i uint8) {
 		for y := 0; y < d; y++ {
 			if b.data[x][y].val == i {
 				b.data[x][y].tick = true
+				b.sum -= int(i)
 				return
 			}
 		}
@@ -53,15 +55,4 @@ func (b *Board) Bingo() bool {
 		}
 	}
 	return false
-}
-
-func (b *Board) Sum() (total int) {
-	for x := 0; x < d; x++ {
-		for y := 0; y < d; y++ {
-			if !b.data[x][y].tick {
-				total += int(b.data[x][y].val)
-			}
-		}
-	}
-	return
 }
