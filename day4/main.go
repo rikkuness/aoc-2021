@@ -40,7 +40,7 @@ func main() {
 		for bi, b := range boards {
 			if !b.win {
 				if b.Mark(c) {
-					fmt.Println("board", bi, "wins: ", b.sum*int(c))
+					fmt.Printf("board %2d complete\tsum: %d\n", bi, b.sum*int(c))
 				}
 			}
 		}
