@@ -22,7 +22,7 @@ func main() {
 	var w [9]int
 	for _, i := range strings.Split(string(f), ",") {
 		a, _ := strconv.Atoi(i)
-		w[int8(a)] += 1
+		w[a] += 1
 	}
 	fmt.Println(sim(w, 80))
 	fmt.Println(sim(w, 256))
