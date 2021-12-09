@@ -5,7 +5,6 @@ import (
 	"fmt"
 	"math/bits"
 	"os"
-	"regexp"
 	"strconv"
 	"strings"
 )
@@ -101,11 +100,9 @@ func main() {
 
 	f, _ := os.Open("input.txt")
 	s := bufio.NewScanner(f)
-	re := regexp.MustCompile(`^([a-g]{2,7})\s([a-g]{2,7})\s([a-g]{2,7})\s([a-g]{2,7})\s([a-g]{2,7})\s([a-g]{2,7})\s([a-g]{2,7})\s([a-g]{2,7})\s([a-g]{2,7})\s([a-g]{2,7})\s\|\s([a-g]{2,7})\s([a-g]{2,7})\s([a-g]{2,7})\s([a-g]{2,7})$`)
-
 	for s.Scan() {
-		m := re.FindStringSubmatch(s.Text())
-		wiring := deduceWiring(m[1:11])
+		m := strings.Split(s.Text(), " ")
+		wiring := deduceWiring(m[0:10])
 		solved := make(map[byte]int, 10)
 
 		for seq, i := range digits {
