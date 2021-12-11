@@ -12,7 +12,7 @@ func flash(g *[][]byte, count *int, x, y int) {
 	(*g)[y][x] = 0
 	(*count)++
 	for i := 0; i < 9; i++ {
-		var x2, y2 = x + ((i % 9 % 3) - 1), y + (((i % 9 / 3) % 3) - 1)
+		var x2, y2 = x + ((i % 3) - 1), y + (((i / 3) % 3) - 1)
 		if x2 < 0 || y2 < 0 || x2 > d-1 || y2 > d-1 || (*g)[y2][x2] == 0 {
 			continue
 		}
